@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Votação</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <h1 class="titulo">Sistema de Urna</h1>
+    <div id="tela-cpf">
+        <form id="form-cpf">
+            <input type="form-cpf" id="cpf" placeholder="Digite seu CPF" />
+            <button type="button" onclick="verificarCPF()">Verificar</button>
+        </form>
+    </div>
+
+    <div id="tela-votacao" style="display: none;">
+        <h1 class="titulo">Escolha uma opção para votar:</h1>
+        <form id="form-votacao" method="post">
+                <div class="div-imagem">
+                    <label>
+                        <input type="radio" name="opcao" value="{{ opcao.id }}" class="input-candidato">
+                        <img src="https://s2-g1.glbimg.com/Y0yUlAkzQ2fdUDMyhFcca7nf_h8=/0x0:474x359/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2024/o/Z/BMoUZfRHKvlTapLWLy0g/monica-terezinha.jpg" alt="Foto do candidato" class="imagem-candidato">
+                    </label>
+                </div>
+                <div class="div-imagem">
+                    <label>
+                        <input type="radio" name="opcao" value="{{ opcao.id }}" class="input-candidato">
+                        <img src="https://www.sucesupb.org.br/_shared/noticias/not08042024171735.png" alt="Foto do candidato" class="imagem-candidato">
+                    </label>
+                </div>
+            <br style="clear: both;">
+            <button onclick="enviarVoto()">Confirmar</button>
+        </form>
+    </div>
+
+    <script>
+        function verificarCPF() {
+            /*tenho que implementar*/
+            var cpf = document.getElementById('cpf').value;
+            exibirTelaVotacao();
+        }
+
+        function exibirTelaVotacao() {
+            document.getElementById('tela-cpf').style.display = 'none';
+            document.getElementById('tela-votacao').style.display = 'block';
+        }
+
+        function enviarVoto() {
+            /*tenho que implementar*/
+            document.getElementById('form-votacao').submit();
+        }
+
+        /*essa função serve apenas pra deixar as imagens com as mesmas dimenções*/
+        function calcularMediaDimensoes() {
+            var imagens = document.querySelectorAll('.imagem-candidato');
+            var larguraTotal = 0;
+            var alturaTotal = 0;
+            
+            imagens.forEach(function(imagem) {
+                larguraTotal += imagem.naturalWidth;
+                alturaTotal += imagem.naturalHeight;
+            });
+            
+            var mediaLargura = larguraTotal / imagens.length;
+            var mediaAltura = alturaTotal / imagens.length;
+            
+            imagens.forEach(function(imagem) {
+                imagem.style.width = mediaLargura + 'px';
+                imagem.style.height = mediaAltura + 'px';
+            });
+        }
+        /*chama a função toda vez que tiver pronto*/
+        document.addEventListener('DOMContentLoaded', function() {
+            calcularMediaDimensoes();
+        });
+
+    </script>
+</body>
+</html>

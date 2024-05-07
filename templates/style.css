@@ -1,0 +1,46 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+body {
+font-family: Arial, sans-serif;
+background-image: linear-gradient(to bottom right, #ffcccc, #55b2be);
+}
+
+.titulo {
+	text-align: center; /* Centraliza o texto */
+	margin-top: 50px; /* Define uma margem superior para afastar do topo */
+}
+
+#tela-cpf {
+text-align: center; /* Centraliza o conteúdo */
+margin-top: 100px; /* Define uma margem superior para afastar do topo */
+}
+#login {
+	text-align: center; /* Centraliza o conteúdo */
+	margin-top: 100px; /* Define uma margem superior para afastar do topo */
+}
+
+#container-pai {
+	width: 100%; /* Define a largura como 100% */
+	height: 100vh; /* Define a altura como 100% da viewport */
+	display: flex; /* Utiliza flexbox para alinhar os elementos */
+	justify-content: center; /* Centraliza os elementos horizontalmente */
+	align-items: center; /* Centraliza os elementos verticalmente */
+}
+
+.div-imagem {
+	width: 50%; /* Define a largura das divs como 50% */
+	float: left; /* Faz com que as divs flutuem para a esquerda */
+	box-sizing: border-box; /* Garante que a largura inclua padding e borda */
+	padding: 10px; /* Adiciona um espaçamento interno */
+	text-align: center; /* Centraliza o conteúdo */
+}
+
+.imagem-candidato {
+	width: 100%; /* Define a largura como 100% */
+	height: auto; /* Mantém a proporção original da imagem */
+	max-width: 750px; /* Define a largura máxima */
+	max-height: 500px; /* Define a altura máxima */
+}
