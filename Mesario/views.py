@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate, login
 from Eleitor.models import Eleitor
 from Eleitor.serializers import EleitorSerializer
 from rest_framework import generics, status
@@ -111,3 +112,16 @@ class DenyMesarioView(APIView):
                 return Response({'Eleitor nao encontrado': 'Documento invalido'}, status=status.HTTP_404_NOT_FOUND)
 
         return Response({'Bad Request': 'Documento nao informado'}, status=status.HTTP_400_BAD_REQUEST)
+
+    def login_administrador(request):
+        if request.method == 'POST':
+            username = request.POST.get('username')
+            password = request.POST.get('password')
+            user = authenticate(username=username, password=password)
+            if user is not None:
+                login(request, user)
+                return redirect('pagina_resultado')
+            else:
+                return render(request, 'login_administrador.html', {'mensagem': 'Credenciais inválidas. Tente novamente.'})
+        else:
+            return render(request, 'login_administrador.html')
